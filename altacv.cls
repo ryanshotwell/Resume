@@ -35,6 +35,7 @@
 %% v1.3: load hyperref for clickable hyperlinks
 \newif\if@withhyper
 \DeclareOption{withhyper}{\@withhypertrue}
+%% Fork: Add a "darkmode" variable to toggle it in main.tex, line 31 as a \documentclass argument
 \newif\ifdarkmode
 \DeclareOption{darkmode}{\darkmodetrue}
 \ProcessOptions\relax
@@ -207,7 +208,8 @@
 \newlength{\altacv@photo@diam@right}
 \def\altacv@left@photos{}
 \def\altacv@right@photos{}
-
+% Fork: Added a variable for photo width which will impact in any position case
+\newcommand{\photoWidth}{6,5ex}
 \newcommand{\@makeaphoto}[2]{%
   \begin{minipage}{#1}%
     \if@normalphoto
@@ -222,14 +224,14 @@
 % Fork: Horizontal space changed from 1ex to 6,5ex to align photo container width to smaller column width (25%)
 \newcommand{\altacv@add@photo@left}[1]{%
   \appto{\altacv@left@photos}{%
-    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{6,5ex}%
+    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{\photoWidth}%
   }%
   \addtolength{\altacv@photos@width}{\altacv@photo@diam@left}%
   \addtolength{\altacv@photos@width}{1ex}%
 }
 \newcommand{\altacv@add@photo@right}[1]{%
   \appto{\altacv@right@photos}{%
-    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{6,5ex}%
+    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{\photoWidth}%
   }%
   \addtolength{\altacv@photos@width}{\altacv@photo@diam@right}%
   \addtolength{\altacv@photos@width}{1ex}%
@@ -301,7 +303,7 @@
 
 % Fork: Tags now have a more consistent vertican and horizontal separation
 \newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.75ex,text height=1.5ex,text depth=.25ex]{#1};
+  \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.75ex,text height=1.5ex,text depth=0.25ex]{#1};
   \vspace{0.25ex}
 }
 
