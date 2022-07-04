@@ -208,6 +208,13 @@
 \def\altacv@left@photos{}
 \def\altacv@right@photos{}
 
+% Custom fields
+\NewInfoField{tree}{\faTree}
+\NewInfoField{game}{\faGamepad}
+\NewInfoField{robot}{\faRobot}
+\NewInfoField{learn}{\faGraduationCap}
+\NewInfoField{house}{\faHouseUser}
+
 \newcommand{\@makeaphoto}[2]{%
   \begin{minipage}{#1}%
     \if@normalphoto
@@ -381,7 +388,7 @@
 }
 
 % Fork: CV reference tag has been modified to accept only linkedin accounts instead mail. It can be modified easily in case you need to display other type of contact
-\newcommand{\cvref}[2]{%
+\newcommand{\cvref}[3]{%
   \textcolor{emphasis}{\textbf{#1}}\par
   \begin{description}[font=\color{accent},style=multiline,leftmargin=1.35em,align=left]
     \item[\small\normalfont\faLinkedin]\href{https://linkedin.com/in/#2}{#2}
